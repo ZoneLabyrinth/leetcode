@@ -16,7 +16,27 @@
  * @param {TreeNode} root
  * @return {number[][]}
  */
-var levelOrder = function(root) {
+var levelOrder = function (root) {
+  //DFS
+  // if (!root) return []
+  // levelOrder(root)
+
+  // function insertOrder(root, level, quene) {
+  //   if (!root) return []
+  //   if (quene.length < level + 1) {
+  //     quene.push([])
+  //   }
+  //   quene[level].push(root);
+  //   insertOrder(root.left, level+1, quene);
+  //   insertOrder(root.right, level+1, quene)
+  // }
+
+
+  //BFS
+  let quene = []
+  insertOrder(root, 0, quene)
+  return quene
+
   if(!root) return []
   let result = [];
   let queue = [root];
@@ -32,7 +52,7 @@ var levelOrder = function(root) {
       if(node.right) queue.push(node.right);
     }
     level++;
-  
+
   }
   return result;
 
